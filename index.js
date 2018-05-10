@@ -1,10 +1,22 @@
 const express = require("express");
+const cors = require("cors");
 const PORT = process.env.PORT || 9000;
 
 const app = express();
 
+app.use(cors());
+
+app.get("/user-data", (req, res) => {
+    const user = {
+        "name": "jim Bob",
+        "email": "jimsmom@mail.com"
+    };
+
+    res.send(user);
+});
+
 app.get("/", (req, res) => {
-    res.send("<h1>App is Working!</h1>");
+    res.send("<h1>Something completely different!</h1>");
 });
 
 app.listen(PORT, () => {
@@ -13,3 +25,5 @@ app.listen(PORT, () => {
     console.log("Server Error:", err.message);
     console.log("Do you already have a server running on PORT:" + PORT + "?");
 });
+
+
